@@ -1,3 +1,5 @@
+/* Moment 4, DT207G Backend-baserad webbutveckling, Åsa Lindskog sali1502@student.miun.se */
+
 document.addEventListener("DOMContentLoaded", () => {
     // Registrering av användare
     const registerForm = document.getElementById("registerForm");
@@ -24,12 +26,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 const data = await response.json();
 
-                if (response.ok) {
-                    handleResponse(response, data);
-                    window.location.href = "login.html";
-                } else {
-                    handleResponse(response, data);
-                }
+                handleResponse(response, data);
             } catch (error) {
                 console.error("Ett fel uppstod vid registrering", error);
                 displayMessage("Ett fel uppstod vid registrering", "error");
@@ -37,7 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // Logga in användare
+    // Login användare
     const loginForm = document.getElementById("loginForm");
 
     if (loginForm) {
@@ -66,14 +63,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 const data = await response.json();
 
-                console.log("Login response:", response);
+                console.log("Login respons:", response);
                 console.log("Login data:", data);
+                handleResponse(response, data);
 
-                if (response.ok && data.token) {
-                    localStorage.setItem("token", data.token);
+                if (response.ok && data.response && data.response.token) {
+                    localStorage.setItem("token", data.response.token);
                     window.location.href = "mypage.html";
                 } else {
-                    handleResponse(response, data);
+                    displayMessage(data.error || "Fel användarnamn eller lösenord", "error");
                 }
             } catch (error) {
                 console.error("Ett fel uppstod vid inloggning", error);
@@ -82,13 +80,15 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 
-    // Skyddad sida och logga ut
+    // Skyddad sida
     const token = localStorage.getItem("token");
 
-    if (token && window.location.pathname.endsWith("mypage.html")) {
-        verifyToken(token);
-    } else if (!token && window.location.pathname.endsWith("mypage.html")) {
-        window.location.href = "index.html";
+    if (window.location.pathname.endsWith("mypage.html")) {
+        if (token) {
+            verifyToken(token);
+        } else {
+            window.location.href = "index.html";
+        }
     }
 
     async function verifyToken(token) {
@@ -105,7 +105,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 window.location.href = "index.html";
             } else {
                 const data = await response.json();
-                console.log("Protected data:", data);
+                console.log("Skyddad data:", data);
             }
         } catch (error) {
             console.error("Ett fel uppstod vid hämtning av skyddad data", error);
@@ -113,9 +113,12 @@ document.addEventListener("DOMContentLoaded", () => {
             window.location.href = "index.html";
         }
 
-        document.getElementById("logoutBtn").addEventListener("click", () => {
-            logOut();
-        });
+        const logoutBtn = document.getElementById("logoutBtn");
+        if (logoutBtn) {
+            logoutBtn.addEventListener("click", () => {
+                logOut();
+            });
+        }
     }
 
     function logOut() {
@@ -123,23 +126,26 @@ document.addEventListener("DOMContentLoaded", () => {
         window.location.href = "index.html";
     }
 
-    // Funktion för att visa felmeddelanden
+    // Funktion för att hantera meddelanden
     function displayMessage(message, type) {
         const messageContainer = document.querySelector(".message-container");
-        messageContainer.innerHTML = `<p class="${type}">${message}</p>`;
+        if (messageContainer) {
+            messageContainer.innerHTML = `<p class="${type}">${message}</p>`;
+        }
     }
 
     // Funktion för att hantera respons
     function handleResponse(response, data) {
         const messageContainer = document.querySelector(".message-container");
-        messageContainer.innerHTML = "";
+        if (messageContainer) {
+            messageContainer.innerHTML = "";
 
-        if (response && response.ok) {
-            messageContainer.innerHTML = `<p class="success">${data.message}</p>`;
-        } else {
-            const errorMessage = data.error || "Ett fel uppstod";
-            messageContainer.innerHTML = `<p class="error">${errorMessage}</p>`;
+            if (response && response.ok) {
+                messageContainer.innerHTML = `<p class="success">${data.message}</p>`;
+            } else {
+                const errorMessage = data.error || "Ett fel uppstod";
+                messageContainer.innerHTML = `<p class="error">${errorMessage}</p>`;
+            }
         }
     }
 });
-

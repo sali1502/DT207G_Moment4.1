@@ -70,6 +70,10 @@ body {
     margin: 0 auto 0 auto;
 }
 
+.space {
+    height: 1vh;
+}
+
 h1 {
     font: 200% base.$font-stack;
     font-weight: bold;
@@ -85,8 +89,7 @@ h2 {
     font: 100% base.$font-stack;
     font-weight: bold;
     font-size: 1.5em;
-    margin-top: 5vh;
-    margin-bottom: 4vh;
+    margin-bottom: 2vh;
     color: rgb(0, 105, 79);
     text-align: center;
 }

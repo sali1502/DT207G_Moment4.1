@@ -9,15 +9,6 @@
 
 <div class="grid-container">
     <header>
-        <div class="menu-container">
-            <nav>
-                <ul>
-                    <li><a href="index.html">Registrera</a></li>
-                    <li><a href="login.html">Logga in</a></li>
-                    <li><a href="mypage.html" class="active">Min sida</a></li>
-                </ul>
-            </nav>
-        </div>
     </header>
 
 <body>
@@ -33,12 +24,14 @@
                         <source srcset="./images/tree.jpg?as=webp&width=250" type="image/webp">
                         <img src="./images/tree.jpg?width=250" alt="Lövträd">
                     </picture>
+                    <div class="space"></div>
+                <button id="logoutBtn" class="button">Log Out</button>  
             </div>
-            <button id="logoutBtn" class="button">Log Out</button>
         </main>
     </div>
 </div>
     <script type="module" src="js/main.js"></script>
+    <script type="module" src="js/token.js"></script>
 </body>
 
 </html>
