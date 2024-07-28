@@ -1,7 +1,7 @@
 window.onload = init;
 async function init() {
-    const jwtToken = localStorage.getItem("jwtToken");
-    if (!jwtToken) {
+    const token = localStorage.getItem("token");
+    if (!token) {
         window.location.href = "index.html"
     }
 };
