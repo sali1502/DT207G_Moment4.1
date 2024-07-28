@@ -1,0 +1,18 @@
+{
+  "name": "dt207g_moment4.1",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "parcel src/*.html --open chrome",
+    "build": "parcel build src/*.html"
+  },
+  "browserslist": ">0.5%, last 2 versions, not dead",
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@parcel/transformer-sass": "^2.12.0",
+    "parcel": "^2.12.0",
+    "sharp": "^0.31.3"
+  }
+}

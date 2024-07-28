@@ -1,0 +1,276 @@
+@use 'base';
+@use 'keyframes';
+
+* {
+    margin: 0;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 2fr;
+    grid-gap: 0px;
+    max-width: 700px;
+    height: auto;
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+    margin-top: 20vh;
+    margin: 0 auto 0 auto;
+    opacity: 0.8;
+}
+
+body {
+    font: 100% base.$font-stack;
+    width: 100%;
+    height: auto;
+    font-size: 0.9em;
+    color: rgb(0, 0, 0);
+    background-image: url('../images/tree.jpg');
+    background-size: cover;
+    background-repeat: repeat;
+    text-align: center;
+    margin: 0 auto 0 auto;
+}
+
+.menu-container {
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+    margin: 0 auto 0 auto;
+    margin-bottom: 5vh;
+    font-size: 1.2em;
+    padding-top: 5vh;
+    padding-bottom: 5vh;
+}
+
+.text-container {
+    text-align: center;
+    width: 100%;
+    padding-bottom: 100vh;
+    padding-left: 50px;
+    padding-right: 50px;
+    margin: 0 auto 0 auto;
+}
+
+.list-container {
+    text-align: center;
+    width: 100%;
+    padding-bottom: 100vh;
+    padding-left: 30px;
+    padding-right: 50px;
+    margin: 0 auto 0 auto;
+}
+
+.image-container {
+    text-align: center;
+    width: 100%;
+    padding-bottom: 100vh;
+    margin: 0 auto 0 auto;
+}
+
+h1 {
+    font: 200% base.$font-stack;
+    font-weight: bold;
+    font-size: 2.2em;
+    margin-top: 5vh;
+    margin-bottom: 4vh;
+    margin-left: 50px;
+    color: rgb(0, 105, 79);
+    text-align: left;
+}
+
+h2 {
+    font: 100% base.$font-stack;
+    font-weight: bold;
+    font-size: 1.5em;
+    margin-top: 5vh;
+    margin-bottom: 4vh;
+    color: rgb(0, 105, 79);
+    text-align: center;
+}
+
+p {
+    margin-top: 2vh;
+    font: 100% base.$font-stack;
+    font-size: 0.9em;
+    line-height: 2em;
+    color: rgb(0, 0, 0);
+    background-color: rgb(255, 255, 255);
+    text-align: left;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0 auto;
+    padding: 20px;
+    text-align: center;
+    overflow: hidden;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: inline;
+    padding: 10px;
+    background-color: white;
+}
+
+a {
+    color: rgb(0, 0, 0);
+}
+
+nav a {
+    text-decoration: none;
+}
+
+.active {
+    background-color: rgb(0, 105, 79);
+    color: white;
+}
+
+.list-container ul {
+    list-style-type: none;
+    margin: 0 auto;
+}
+
+.list-container ul {
+    float: left;
+}
+
+form {
+    text-align: left;
+}
+
+input[type=text] {
+    width: 100%;
+    padding: 5px;
+    border-radius: 4px;
+    margin-top: 0.5vh;
+    margin-bottom: 1vh;
+}
+
+.textarea {
+    width: 100%;
+    height: 20vh;
+    padding: 5px;
+    border-radius: 4px;
+    margin-top: 0.5vh;
+    margin-bottom: 0.5vh;
+}
+
+.list-container ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.list-container li {
+    margin-bottom: 20px;
+    width: 300px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.button-container {
+    margin-top: 1vh;
+    margin-bottom: 2vh;
+    text-align: left;
+}
+
+.button-container button {
+    margin-right: 10px;
+    background-color: rgb(161, 65, 65);
+    color: white;
+    margin-top: 0.5vh;
+    border-radius: 30px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-right: 6px;
+    padding-left: 6px;
+    font-size: 0.8em;
+}
+
+.username {
+    font-weight: bold;
+    font-size: 1.5em;
+    text-align: left;
+    margin-bottom: 1vh;
+}
+
+.password {
+    text-align: left;
+    font-size: 0.9em;
+    line-height: 1.5em;
+}
+
+.message-container {
+    color: rgb(161, 65, 65);
+    margin-bottom: 5vh;
+    text-align: left;
+    padding-left: 50px;
+    font-weight: bold;
+}
+
+// Animering - knapp rör sig vid hover
+.button {
+    background-color: rgb(161, 65, 65);
+    color: white;
+    margin-top: 0.5vh;
+    border-radius: 30px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    padding-right: 6px;
+    padding-left: 6px;
+    font-size: 0.8em;
+}
+
+.button:hover {
+    animation: btnHover 2s 0s infinite both ease-out;
+}
+
+.message-container {
+    margin-top: 20px;
+}
+
+.success {
+    font-weight: bold;
+    color: rgb(0, 105, 79);
+}
+
+.error {
+    font-weight: bold;
+    color: rgb(161, 65, 65);
+}
+
+/* Media querys */
+
+/* dark mode */
+@media (prefers-color-scheme: dark) {
+
+    .grid-container {
+        background-color: base.$primary-bg-darkm !important;
+    }
+
+    body {
+        background-color: base.$primary-bg-darkm !important;
+    }
+
+    h1 {
+        color: base.$primary-heading-darkm !important;
+    }
+
+    li {
+        color: base.$primary-text-darkm !important;
+    }
+
+    div {
+        color: base.$primary-text-darkm !important;
+    }
+
+    p {
+        color: base.$primary-text-darkm !important;
+    }
+}
