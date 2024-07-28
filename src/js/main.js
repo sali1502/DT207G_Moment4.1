@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const password = document.getElementById("password").value;
 
             if (!username || !password) {
-                displayMessage("Alla fält behöver fyllas i", "error");
+                displayMessage("Alla fält behöver fyllas i!", "error");
                 return;
             }
 
@@ -44,7 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const password = document.getElementById("password").value;
 
             if (!username || !password) {
-                displayMessage("Alla fält behöver fyllas i", "error");
+                displayMessage("Alla fält behöver fyllas i!", "error");
                 return;
             }
 
@@ -149,3 +149,4 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     }
 });
+
