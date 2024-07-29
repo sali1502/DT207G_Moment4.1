@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    // Login användare
+    // Login av användare
     const loginForm = document.getElementById("loginForm");
 
     if (loginForm) {
